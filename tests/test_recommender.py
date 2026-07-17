@@ -1,4 +1,10 @@
-from src.recommender import Song, UserProfile, Recommender
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
+from src.recommender import Song, UserProfile, Recommender, load_songs
+
 
 def make_small_recommender() -> Recommender:
     songs = [
@@ -59,3 +65,28 @@ def test_explain_recommendation_returns_non_empty_string():
     explanation = rec.explain_recommendation(user, song)
     assert isinstance(explanation, str)
     assert explanation.strip() != ""
+
+
+def test_score_song_returns_score_and_reasons():
+    user_prefs = {"genre": "pop", "mood": "happy", "energy": 0.8}
+    song = {
+        "genre": "pop",
+        "mood": "happy",
+        "energy": 0.8,
+    }
+
+    score, reasons = load_songs.__globals__["score_song"](user_prefs, song)
+
+    assert score == 4.0
+    assert any("genre match" in reason for reason in reasons)
+    assert any("mood match" in reason for reason in reasons)
+
+
+def test_load_songs_converts_numeric_values_to_numbers():
+    csv_path = Path("data/songs.csv")
+    songs = load_songs(str(csv_path))
+
+    assert len(songs) == 10
+    assert isinstance(songs[0]["energy"], float)
+    assert isinstance(songs[0]["tempo_bpm"], int)
+    assert isinstance(songs[0]["acousticness"], float)
