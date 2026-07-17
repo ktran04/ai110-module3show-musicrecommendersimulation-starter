@@ -100,32 +100,175 @@ You can add more tests in `tests/test_recommender.py`.
 
 ## Sample Recommendation Output
 
-Paste a sample of your recommender's output here as a text block so a reader can see what it produces:
+Below are real terminal outputs from running the recommender on several regular and edge-case profiles.
 
-```
+### High-Energy Pop
+
+```text
 Loaded songs: 10
 
-Top recommendations (profile: genre=pop, mood=happy, energy=0.8)
+Top recommendations (High-Energy Pop)
 ------------------------------------------------------------------------
+profile: genre=pop, mood=happy, energy=0.9
 1. Sunrise City
-  Score  : 3.98
-  Reasons: genre match (+2.0); mood match (+1.0); energy similarity (+0.98)
+  Score  : 3.92
+  Reasons: genre match (+2.0); mood match (+1.0); energy similarity (+0.92)
 ------------------------------------------------------------------------
 2. Gym Hero
-  Score  : 2.87
-  Reasons: genre match (+2.0); mood mismatch (intense); energy similarity (+0.87)
+  Score  : 2.97
+  Reasons: genre match (+2.0); mood mismatch (intense); energy similarity (+0.97)
 ------------------------------------------------------------------------
 3. Rooftop Lights
-  Score  : 1.96
-  Reasons: genre mismatch (indie pop); mood match (+1.0); energy similarity (+0.96)
+  Score  : 1.86
+  Reasons: genre mismatch (indie pop); mood match (+1.0); energy similarity (+0.86)
 ------------------------------------------------------------------------
-4. Night Drive Loop
-  Score  : 0.95
-  Reasons: genre mismatch (synthwave); mood mismatch (moody); energy similarity (+0.95)
+4. Storm Runner
+  Score  : 0.99
+  Reasons: genre mismatch (rock); mood mismatch (intense); energy similarity (+0.99)
 ------------------------------------------------------------------------
-5. Storm Runner
-  Score  : 0.89
-  Reasons: genre mismatch (rock); mood mismatch (intense); energy similarity (+0.89)
+5. Night Drive Loop
+  Score  : 0.85
+  Reasons: genre mismatch (synthwave); mood mismatch (moody); energy similarity (+0.85)
+------------------------------------------------------------------------
+```
+
+### Chill Lofi
+
+```text
+Top recommendations (Chill Lofi)
+------------------------------------------------------------------------
+profile: genre=lofi, mood=calm, energy=0.2
+1. Library Rain
+  Score  : 2.85
+  Reasons: genre match (+2.0); mood mismatch (chill); energy similarity (+0.85)
+------------------------------------------------------------------------
+2. Focus Flow
+  Score  : 2.80
+  Reasons: genre match (+2.0); mood mismatch (focused); energy similarity (+0.80)
+------------------------------------------------------------------------
+3. Midnight Coding
+  Score  : 2.78
+  Reasons: genre match (+2.0); mood mismatch (chill); energy similarity (+0.78)
+------------------------------------------------------------------------
+4. Spacewalk Thoughts
+  Score  : 0.92
+  Reasons: genre mismatch (ambient); mood mismatch (chill); energy similarity (+0.92)
+------------------------------------------------------------------------
+5. Coffee Shop Stories
+  Score  : 0.83
+  Reasons: genre mismatch (jazz); mood mismatch (relaxed); energy similarity (+0.83)
+------------------------------------------------------------------------
+```
+
+### Deep Intense Rock
+
+```text
+Top recommendations (Deep Intense Rock)
+------------------------------------------------------------------------
+profile: genre=rock, mood=intense, energy=0.95
+1. Storm Runner
+  Score  : 3.96
+  Reasons: genre match (+2.0); mood match (+1.0); energy similarity (+0.96)
+------------------------------------------------------------------------
+2. Gym Hero
+  Score  : 1.98
+  Reasons: genre mismatch (pop); mood match (+1.0); energy similarity (+0.98)
+------------------------------------------------------------------------
+3. Sunrise City
+  Score  : 0.87
+  Reasons: genre mismatch (pop); mood mismatch (happy); energy similarity (+0.87)
+------------------------------------------------------------------------
+4. Rooftop Lights
+  Score  : 0.81
+  Reasons: genre mismatch (indie pop); mood mismatch (happy); energy similarity (+0.81)
+------------------------------------------------------------------------
+5. Night Drive Loop
+  Score  : 0.80
+  Reasons: genre mismatch (synthwave); mood mismatch (moody); energy similarity (+0.80)
+------------------------------------------------------------------------
+```
+
+### Adversarial: Sad High Energy
+
+```text
+Top recommendations (Adversarial: Sad High Energy)
+------------------------------------------------------------------------
+profile: genre=pop, mood=sad, energy=0.9
+1. Gym Hero
+  Score  : 2.97
+  Reasons: genre match (+2.0); mood mismatch (intense); energy similarity (+0.97)
+------------------------------------------------------------------------
+2. Sunrise City
+  Score  : 2.92
+  Reasons: genre match (+2.0); mood mismatch (happy); energy similarity (+0.92)
+------------------------------------------------------------------------
+3. Storm Runner
+  Score  : 0.99
+  Reasons: genre mismatch (rock); mood mismatch (intense); energy similarity (+0.99)
+------------------------------------------------------------------------
+4. Rooftop Lights
+  Score  : 0.86
+  Reasons: genre mismatch (indie pop); mood mismatch (happy); energy similarity (+0.86)
+------------------------------------------------------------------------
+5. Night Drive Loop
+  Score  : 0.85
+  Reasons: genre mismatch (synthwave); mood mismatch (moody); energy similarity (+0.85)
+------------------------------------------------------------------------
+```
+
+### Adversarial: Mismatch Hunter
+
+```text
+Top recommendations (Adversarial: Mismatch Hunter)
+------------------------------------------------------------------------
+profile: genre=classical, mood=party, energy=0.1
+1. Spacewalk Thoughts
+  Score  : 0.82
+  Reasons: genre mismatch (ambient); mood mismatch (chill); energy similarity (+0.82)
+------------------------------------------------------------------------
+2. Library Rain
+  Score  : 0.75
+  Reasons: genre mismatch (lofi); mood mismatch (chill); energy similarity (+0.75)
+------------------------------------------------------------------------
+3. Coffee Shop Stories
+  Score  : 0.73
+  Reasons: genre mismatch (jazz); mood mismatch (relaxed); energy similarity (+0.73)
+------------------------------------------------------------------------
+4. Focus Flow
+  Score  : 0.70
+  Reasons: genre mismatch (lofi); mood mismatch (focused); energy similarity (+0.70)
+------------------------------------------------------------------------
+5. Midnight Coding
+  Score  : 0.68
+  Reasons: genre mismatch (lofi); mood mismatch (chill); energy similarity (+0.68)
+------------------------------------------------------------------------
+```
+
+### Adversarial: Everything Conflicts
+
+```text
+Top recommendations (Adversarial: Everything Conflicts)
+------------------------------------------------------------------------
+profile: genre=jazz, mood=intense, energy=0.99
+1. Coffee Shop Stories
+  Score  : 2.38
+  Reasons: genre match (+2.0); mood mismatch (relaxed); energy similarity (+0.38)
+------------------------------------------------------------------------
+2. Gym Hero
+  Score  : 1.94
+  Reasons: genre mismatch (pop); mood match (+1.0); energy similarity (+0.94)
+------------------------------------------------------------------------
+3. Storm Runner
+  Score  : 1.92
+  Reasons: genre mismatch (rock); mood match (+1.0); energy similarity (+0.92)
+------------------------------------------------------------------------
+4. Sunrise City
+  Score  : 0.83
+  Reasons: genre mismatch (pop); mood mismatch (happy); energy similarity (+0.83)
+------------------------------------------------------------------------
+5. Rooftop Lights
+  Score  : 0.77
+  Reasons: genre mismatch (indie pop); mood mismatch (happy); energy similarity (+0.77)
 ------------------------------------------------------------------------
 ```
 
